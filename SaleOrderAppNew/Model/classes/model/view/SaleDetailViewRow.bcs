@@ -1,0 +1,12 @@
+//Groovy Scripts for model.view.SaleDetailView
+
+package model.view
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="TotalAmount")
+def TotalAmount_ExpressionScript_Expression()
+{
+sum("SdValue")
+}
+

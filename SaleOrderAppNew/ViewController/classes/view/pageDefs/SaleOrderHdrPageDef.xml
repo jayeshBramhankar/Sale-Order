@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="SaleOrderHdrPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SaleHeaderView1" RangeSize="25" DataControl="AppModuleDataControl" id="SaleHeaderView1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SaleHeaderView1Iterator" id="SaContact">
+      <AttrNames>
+        <Item Value="SaContact"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SaleHeaderView1Iterator" id="SaDate">
+      <AttrNames>
+        <Item Value="SaDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SaleHeaderView1Iterator" id="SaDeliveryAdd">
+      <AttrNames>
+        <Item Value="SaDeliveryAdd"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SaleHeaderView1Iterator" id="SaId">
+      <AttrNames>
+        <Item Value="SaId"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SaleHeaderView1Iterator" StaticList="false" Uses="LOV_SaPartyId" id="SaPartyId"/>
+    <action id="Commit" DataControl="AppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="AppModuleDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PartyMaster"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="PARTY_MASTER"
+  AliasName="PartyMaster"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="PartyId"
+    IsNotNull="true"
+    Precision="20"
+    Scale="0"
+    ColumnName="PARTY_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="PARTY_MASTER"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="PartyName"
+    Precision="500"
+    ColumnName="PARTY_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PARTY_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PartyCode"
+    Precision="10"
+    ColumnName="PARTY_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PARTY_MASTER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="PkPartyMaster"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PK_PARTY_MASTER"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entity.PartyMaster.PartyId"/>
+    </AttrArray>
+  </Key>
+</Entity>

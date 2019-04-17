@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PartyMasterView"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  SelectAllAttributes="false">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.view.PartyMasterView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="PartyMaster"
+    Entity="model.entity.PartyMaster"/>
+  <ViewAttribute
+    Name="PartyCode"
+    PrecisionRule="true"
+    EntityAttrName="PartyCode"
+    EntityUsage="PartyMaster"
+    AliasName="PARTY_CODE"/>
+  <ViewAttribute
+    Name="PartyId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PartyId"
+    EntityUsage="PartyMaster"
+    AliasName="PARTY_ID"/>
+  <ViewAttribute
+    Name="PartyName"
+    PrecisionRule="true"
+    EntityAttrName="PartyName"
+    EntityUsage="PartyMaster"
+    AliasName="PARTY_NAME"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

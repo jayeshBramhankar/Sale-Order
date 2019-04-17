@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Welcome.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelStretchLayout id="psl1" bottomHeight="50px">
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:facet name="top"/>
+                <f:facet name="bottom"/>
+                <f:facet name="center">
+                    <af:panelBox text="Sale Order Details" id="pb1">
+                        <f:facet name="toolbar"/>
+                        <af:panelCollection id="pc1">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar">
+                                <af:toolbar id="t1">
+                                    <af:button text="Create New Sale Order" id="b1" action="createRecord"
+                                               actionListener="#{bindings.CreateInsert.execute}"/>
+                                </af:toolbar>
+                            </f:facet>
+                            <af:table value="#{bindings.SaleHeaderView1.collectionModel}" var="row"
+                                      rows="#{bindings.SaleHeaderView1.rangeSize}"
+                                      emptyText="#{bindings.SaleHeaderView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      rowBandingInterval="0"
+                                      selectedRowKeys="#{bindings.SaleHeaderView1.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.SaleHeaderView1.collectionModel.makeCurrent}"
+                                      rowSelection="single" fetchSize="#{bindings.SaleHeaderView1.rangeSize}"
+                                      filterModel="#{bindings.SaleHeaderView1Query.queryDescriptor}"
+                                      filterVisible="true" queryListener="#{bindings.SaleHeaderView1Query.processQuery}"
+                                      varStatus="vs" id="t2" partialTriggers="b3 ::b1" columnStretching="none"
+                                      width="780">
+                                      <af:column sortProperty="#{bindings.SaleHeaderView1.hints.SaId.name}" filterable="true"
+                                           sortable="true" headerText="#{bindings.SaleHeaderView1.hints.SaId.label}"
+                                           id="c4" width="100">
+                                    <af:outputText value="#{row.SaId}"
+                                                   shortDesc="#{bindings.SaleHeaderView1.hints.SaId.tooltip}" id="ot4">
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.SaleHeaderView1.hints.SaId.format}"/>
+                                    </af:outputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.SaleHeaderView1.hints.SaContact.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.SaleHeaderView1.hints.SaContact.label}" id="c1"
+                                           width="100">
+                                    <af:outputText value="#{row.SaContact}"
+                                                   shortDesc="#{bindings.SaleHeaderView1.hints.SaContact.tooltip}"
+                                                   id="ot1">
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.SaleHeaderView1.hints.SaContact.format}"/>
+                                    </af:outputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.SaleHeaderView1.hints.SaDate.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.SaleHeaderView1.hints.SaDate.label}" id="c2"
+                                           width="100">
+                                    <f:facet name="filter">
+                                        <af:inputDate value="#{bindings.SaleHeaderView1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.SaDate.value}"
+                                                      id="id1">
+                                            <af:convertDateTime pattern="#{bindings.SaleHeaderView1.hints.SaDate.format}"/>
+                                        </af:inputDate>
+                                    </f:facet>
+                                    <af:outputText value="#{row.SaDate}"
+                                                   shortDesc="#{bindings.SaleHeaderView1.hints.SaDate.tooltip}"
+                                                   id="ot2">
+                                        <af:convertDateTime pattern="#{bindings.SaleHeaderView1.hints.SaDate.format}"/>
+                                    </af:outputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.SaleHeaderView1.hints.SaDeliveryAdd.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.SaleHeaderView1.hints.SaDeliveryAdd.label}" id="c3"
+                                           width="100">
+                                    <af:outputText value="#{row.SaDeliveryAdd}"
+                                                   shortDesc="#{bindings.SaleHeaderView1.hints.SaDeliveryAdd.tooltip}"
+                                                   id="ot3"/>
+                                </af:column>
+                                
+                                <af:column sortProperty="#{bindings.SaleHeaderView1.hints.SaPartyId.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.SaleHeaderView1.hints.SaPartyId.label}" id="c5"
+                                           width="100">
+                                    <af:outputText value="#{row.SaPartyId}"
+                                                   shortDesc="#{bindings.SaleHeaderView1.hints.SaPartyId.tooltip}"
+                                                   id="ot5">
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.SaleHeaderView1.hints.SaPartyId.format}"/>
+                                    </af:outputText>
+                                </af:column>
+                                <af:column id="c6"
+                                           inlineStyle="drop-initial-after-align:central; vertical-align:middle;"
+                                           width="100">
+                                    <af:button text="Edit" id="b2" inlineStyle="alignment-adjust:central;"
+                                               action="edit"/>
+                                </af:column>
+                                <af:column id="c7" width="103">
+                                    <af:button text="Delete"
+                                               disabled="#{!bindings.Delete.enabled}" id="b3" action="delete"/>
+                                </af:column>
+                            </af:table>
+                        </af:panelCollection>
+                    </af:panelBox>
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+    </af:document>
+</f:view>

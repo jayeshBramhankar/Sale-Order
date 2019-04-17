@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ItemMasterView"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  SelectAllAttributes="false">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.view.ItemMasterView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="ItemMaster"
+    Entity="model.entity.ItemMaster"/>
+  <ViewAttribute
+    Name="ItemCode"
+    PrecisionRule="true"
+    EntityAttrName="ItemCode"
+    EntityUsage="ItemMaster"
+    AliasName="ITEM_CODE"/>
+  <ViewAttribute
+    Name="ItemId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ItemId"
+    EntityUsage="ItemMaster"
+    AliasName="ITEM_ID"/>
+  <ViewAttribute
+    Name="ItemName"
+    PrecisionRule="true"
+    EntityAttrName="ItemName"
+    EntityUsage="ItemMaster"
+    AliasName="ITEM_NAME"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

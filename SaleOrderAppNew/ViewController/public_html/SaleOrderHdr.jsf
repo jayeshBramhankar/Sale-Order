@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="SaleOrderHdr.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelStretchLayout id="psl1">
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:facet name="top"/>
+                <f:facet name="bottom"/>
+                <f:facet name="center">
+                    <af:panelBox text="Sale Order Party Details" id="pb1">
+                        <f:facet name="toolbar"/>
+                        <af:panelFormLayout id="pfl1">
+                        <af:inputText value="#{bindings.SaId.inputValue}" label="#{bindings.SaId.hints.label}"
+                                          required="#{bindings.SaId.hints.mandatory}" disabled="true"
+                                          columns="#{bindings.SaId.hints.displayWidth}"
+                                          maximumLength="#{bindings.SaId.hints.precision}"
+                                          shortDesc="#{bindings.SaId.hints.tooltip}" id="it3">
+                                <f:validator binding="#{bindings.SaId.validator}"/>
+                                <af:convertNumber groupingUsed="false" pattern="#{bindings.SaId.format}"/>
+                            </af:inputText>
+                           
+                            <af:inputDate value="#{bindings.SaDate.inputValue}" label="#{bindings.SaDate.hints.label}"
+                                          required="#{bindings.SaDate.hints.mandatory}"
+                                          columns="20"
+                                          shortDesc="#{bindings.SaDate.hints.tooltip}" id="id1">
+                                <f:validator binding="#{bindings.SaDate.validator}"/>
+                                <af:convertDateTime pattern="#{bindings.SaDate.format}"/>
+                            </af:inputDate>
+                             <af:inputText value="#{bindings.SaContact.inputValue}"
+                                          label="#{bindings.SaContact.hints.label}"
+                                          required="#{bindings.SaContact.hints.mandatory}"
+                                          columns="20"
+                                          maximumLength="#{bindings.SaContact.hints.precision}"
+                                          shortDesc="#{bindings.SaContact.hints.tooltip}" id="it1">
+                                <f:validator binding="#{bindings.SaContact.validator}"/>
+                                <af:convertNumber groupingUsed="false" pattern="#{bindings.SaContact.format}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.SaDeliveryAdd.inputValue}"
+                                          label="#{bindings.SaDeliveryAdd.hints.label}" rows="2"
+                                          required="#{bindings.SaDeliveryAdd.hints.mandatory}"
+                                          columns="30"
+                                          maximumLength="#{bindings.SaDeliveryAdd.hints.precision}"
+                                          shortDesc="#{bindings.SaDeliveryAdd.hints.tooltip}" id="it2">
+                                <f:validator binding="#{bindings.SaDeliveryAdd.validator}"/>
+                            </af:inputText>
+                            <af:inputListOfValues id="saPartyIdId"
+                                                  popupTitle="Search and Select: #{bindings.SaPartyId.hints.label}"
+                                                  value="#{bindings.SaPartyId.inputValue}"
+                                                  label="#{bindings.SaPartyId.hints.label}"
+                                                  model="#{bindings.SaPartyId.listOfValuesModel}"
+                                                  required="#{bindings.SaPartyId.hints.mandatory}"
+                                                  columns="20"
+                                                  shortDesc="#{bindings.SaPartyId.hints.tooltip}">
+                                <f:validator binding="#{bindings.SaPartyId.validator}"/>
+                            </af:inputListOfValues>
+                            <af:toolbar id="t1">
+                                <af:button text="Cancel" id="b1" action="saveRecord"
+                                           actionListener="#{bindings.Rollback.execute}"/>
+                                <af:button text="Add Items" id="b2" action="#{SaleHeaderDetail_Backing.b2_action}"/>
+                                <af:button text="Submit" id="b3" action="#{SaleHeaderDetail_Backing.saveButtonAction}"
+                                           actionListener="#{bindings.Commit.execute}"/>
+                            </af:toolbar>
+                        </af:panelFormLayout>
+                    </af:panelBox>
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:preferred-managed-bean-name:SaleHeaderDetail_Backing-->
+</f:view>

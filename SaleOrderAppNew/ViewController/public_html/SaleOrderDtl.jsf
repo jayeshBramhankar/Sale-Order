@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="SaleOrderDtl.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelStretchLayout id="psl1">
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+                <f:facet name="top"/>
+                <f:facet name="bottom"/>
+                <f:facet name="center">
+                    <af:panelBox text="Party Details" id="pb1">
+                        <f:facet name="toolbar"/>
+                        <af:panelFormLayout id="pfl1">
+                            <af:inputDate value="#{bindings.SaDate.inputValue}" readOnly="true"
+                                          label="#{bindings.SaDate.hints.label}"
+                                          required="#{bindings.SaDate.hints.mandatory}"
+                                          columns="#{bindings.SaDate.hints.displayWidth}"
+                                          shortDesc="#{bindings.SaDate.hints.tooltip}" id="id1">
+                                <f:validator binding="#{bindings.SaDate.validator}"/>
+                                <af:convertDateTime pattern="#{bindings.SaDate.format}"/>
+                            </af:inputDate>
+                            <af:inputText value="#{bindings.SaContact.inputValue}"
+                                          label="#{bindings.SaContact.hints.label}"
+                                          required="#{bindings.SaContact.hints.mandatory}" readOnly="true"
+                                          columns="#{bindings.SaContact.hints.displayWidth}"
+                                          maximumLength="#{bindings.SaContact.hints.precision}"
+                                          shortDesc="#{bindings.SaContact.hints.tooltip}" id="it1">
+                                <f:validator binding="#{bindings.SaContact.validator}"/>
+                                <af:convertNumber groupingUsed="false" pattern="#{bindings.SaContact.format}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.SaDeliveryAdd.inputValue}"
+                                          label="#{bindings.SaDeliveryAdd.hints.label}"
+                                          required="#{bindings.SaDeliveryAdd.hints.mandatory}" readOnly="true"
+                                          columns="#{bindings.SaDeliveryAdd.hints.displayWidth}"
+                                          maximumLength="#{bindings.SaDeliveryAdd.hints.precision}"
+                                          shortDesc="#{bindings.SaDeliveryAdd.hints.tooltip}" id="it2">
+                                <f:validator binding="#{bindings.SaDeliveryAdd.validator}"/>
+                            </af:inputText>
+                            <af:inputText value="#{bindings.SaId.inputValue}" label="#{bindings.SaId.hints.label}"
+                                          required="#{bindings.SaId.hints.mandatory}" readOnly="true"
+                                          columns="#{bindings.SaId.hints.displayWidth}"
+                                          maximumLength="#{bindings.SaId.hints.precision}"
+                                          shortDesc="#{bindings.SaId.hints.tooltip}" id="it3">
+                                <f:validator binding="#{bindings.SaId.validator}"/>
+                                <af:convertNumber groupingUsed="false" pattern="#{bindings.SaId.format}"/>
+                            </af:inputText>
+                            <af:inputListOfValues id="saPartyIdId"
+                                                  popupTitle="Search and Select: #{bindings.SaPartyId.hints.label}"
+                                                  value="#{bindings.SaPartyId.inputValue}"
+                                                  label="#{bindings.SaPartyId.hints.label}"
+                                                  model="#{bindings.SaPartyId.listOfValuesModel}"
+                                                  required="#{bindings.SaPartyId.hints.mandatory}"
+                                                  columns="#{bindings.SaPartyId.hints.displayWidth}"
+                                                  shortDesc="#{bindings.SaPartyId.hints.tooltip}">
+                                <f:validator binding="#{bindings.SaPartyId.validator}"/>
+                            </af:inputListOfValues>
+                        </af:panelFormLayout>
+                        <af:panelBox text="Add Items" id="pb2">
+                        <f:facet name="toolbar"/>
+                        <af:panelCollection id="pc1">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar">
+                                <af:toolbar id="t2">
+                                    <af:button text="Add Item" id="b1"
+                                               action="#{SaleHeaderDetail_Backing.validate_action}"/>
+                                    <af:button text="Delete Item" id="b2" actionListener="#{bindings.Delete.execute}"/>
+                                    <af:button text="Submit" id="b3" action="submitAction"/>
+                                    <af:button text="Cancel" id="b4" action="cancelAction"/>
+                                </af:toolbar>
+                            </f:facet>
+                            <af:table value="#{bindings.SaleDetailView1.collectionModel}" var="row"
+                                      rows="#{bindings.SaleDetailView1.rangeSize}"
+                                      emptyText="#{bindings.SaleDetailView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      rowBandingInterval="0"
+                                      selectedRowKeys="#{bindings.SaleDetailView1.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.SaleDetailView1.collectionModel.makeCurrent}"
+                                      rowSelection="single" fetchSize="#{bindings.SaleDetailView1.rangeSize}"
+                                      filterModel="#{bindings.SaleDetailView1Query.queryDescriptor}"
+                                      filterVisible="true" queryListener="#{bindings.SaleDetailView1Query.processQuery}"
+                                      varStatus="vs" id="t1" partialTriggers="::b1 ::b2" width="670">
+                                <af:column sortProperty="#{bindings.SaleDetailView1.hints.SdId.name}" filterable="true"
+                                           sortable="true" headerText="#{bindings.SaleDetailView1.hints.SdId.label}"
+                                           id="c1">
+                                    <af:inputText value="#{row.bindings.SdId.inputValue}" autoSubmit="true" immediate="true"
+                                                  label="#{bindings.SaleDetailView1.hints.SdId.label}"
+                                                  required="#{bindings.SaleDetailView1.hints.SdId.mandatory}"
+                                                  columns="#{bindings.SaleDetailView1.hints.SdId.displayWidth}"
+                                                  maximumLength="#{bindings.SaleDetailView1.hints.SdId.precision}"
+                                                  shortDesc="#{bindings.SaleDetailView1.hints.SdId.tooltip}" id="it4">
+                                        <f:validator binding="#{row.bindings.SdId.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.SaleDetailView1.hints.SdId.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.SaleDetailView1.hints.SdItemId.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.SaleDetailView1.hints.SdItemId.label}" id="c2">
+                                    <af:inputComboboxListOfValues id="sdItemIdId" autoSubmit="true" immediate="true"
+                                                                  popupTitle="Search and Select: #{bindings.SaleDetailView1.hints.SdItemId.label}"
+                                                                  value="#{row.bindings.SdItemId.inputValue}"
+                                                                  model="#{row.bindings.SdItemId.listOfValuesModel}"
+                                                                  required="#{bindings.SaleDetailView1.hints.SdItemId.mandatory}"
+                                                                  columns="#{bindings.SaleDetailView1.hints.SdItemId.displayWidth}"
+                                                                  shortDesc="#{bindings.SaleDetailView1.hints.SdItemId.tooltip}">
+                                        <f:validator binding="#{row.bindings.SdItemId.validator}"/>
+                                    </af:inputComboboxListOfValues>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.SaleDetailView1.hints.SdQuantity.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.SaleDetailView1.hints.SdQuantity.label}" id="c3">
+                                    <af:inputText value="#{row.bindings.SdQuantity.inputValue}" autoSubmit="true" immediate="true"
+                                                  label="#{bindings.SaleDetailView1.hints.SdQuantity.label}"
+                                                  required="#{bindings.SaleDetailView1.hints.SdQuantity.mandatory}"
+                                                  columns="#{bindings.SaleDetailView1.hints.SdQuantity.displayWidth}"
+                                                  maximumLength="#{bindings.SaleDetailView1.hints.SdQuantity.precision}"
+                                                  shortDesc="#{bindings.SaleDetailView1.hints.SdQuantity.tooltip}"
+                                                  id="it5"
+                                                  valueChangeListener="#{SaleHeaderDetail_Backing.onQuantityChangeAction}"
+                                                  binding="#{SaleHeaderDetail_Backing.b_quantity}">
+                                        <f:validator binding="#{row.bindings.SdQuantity.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.SaleDetailView1.hints.SdQuantity.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.SaleDetailView1.hints.SdRate.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.SaleDetailView1.hints.SdRate.label}" id="c4">
+                                    <af:inputText value="#{row.bindings.SdRate.inputValue}" autoSubmit="true" immediate="true"
+                                                  label="#{bindings.SaleDetailView1.hints.SdRate.label}"
+                                                  required="#{bindings.SaleDetailView1.hints.SdRate.mandatory}"
+                                                  columns="#{bindings.SaleDetailView1.hints.SdRate.displayWidth}"
+                                                  maximumLength="#{bindings.SaleDetailView1.hints.SdRate.precision}"
+                                                  shortDesc="#{bindings.SaleDetailView1.hints.SdRate.tooltip}" id="it6"
+                                                  valueChangeListener="#{SaleHeaderDetail_Backing.onRateChangeAction}"
+                                                  binding="#{SaleHeaderDetail_Backing.b_Rate}">
+                                        <f:validator binding="#{row.bindings.SdRate.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.SaleDetailView1.hints.SdRate.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.SaleDetailView1.hints.SdSrNo.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.SaleDetailView1.hints.SdSrNo.label}" id="c5">
+                                    <af:inputText value="#{row.bindings.SdSrNo.inputValue}" autoSubmit="true" immediate="true"
+                                                  label="#{bindings.SaleDetailView1.hints.SdSrNo.label}"
+                                                  required="#{bindings.SaleDetailView1.hints.SdSrNo.mandatory}"
+                                                  columns="#{bindings.SaleDetailView1.hints.SdSrNo.displayWidth}"
+                                                  maximumLength="#{bindings.SaleDetailView1.hints.SdSrNo.precision}"
+                                                  shortDesc="#{bindings.SaleDetailView1.hints.SdSrNo.tooltip}" id="it7">
+                                        <f:validator binding="#{row.bindings.SdSrNo.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.SaleDetailView1.hints.SdSrNo.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.SaleDetailView1.hints.SdValue.label}" id="c6"
+                                           >
+                                    <af:inputText value="#{row.bindings.SdValue.inputValue}" autoSubmit="true" immediate="true"
+                                                  label="#{bindings.SaleDetailView1.hints.SdValue.label}"
+                                                  required="#{bindings.SaleDetailView1.hints.SdValue.mandatory}"
+                                                  columns="#{bindings.SaleDetailView1.hints.SdValue.displayWidth}"
+                                                  maximumLength="#{bindings.SaleDetailView1.hints.SdValue.precision}"
+                                                  shortDesc="#{bindings.SaleDetailView1.hints.SdValue.tooltip}"
+                                                  id="it8" binding="#{SaleHeaderDetail_Backing.b_Amount}"
+                                                  partialTriggers="it5 it6">
+                                        <f:validator binding="#{row.bindings.SdValue.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.SaleDetailView1.hints.SdValue.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                            </af:table>
+                            <f:facet name="statusbar"/>
+                        </af:panelCollection>
+                    </af:panelBox>
+                    </af:panelBox>
+                    
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+    </af:document>
+</f:view>

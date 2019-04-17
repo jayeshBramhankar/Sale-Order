@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SaleDetail"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SALE_DETAIL"
+  AliasName="SaleDetail"
+  BindingStyle="OracleName"
+  RowClass="model.entity.SaleDetailImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="SdId"
+    IsNotNull="true"
+    Precision="20"
+    Scale="0"
+    ColumnName="SD_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="SALE_DETAIL"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="SdSrNo"
+    IsNotNull="true"
+    Precision="5"
+    Scale="0"
+    ColumnName="SD_SR_NO"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="SALE_DETAIL"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="SdItemId"
+    Precision="20"
+    Scale="0"
+    ColumnName="SD_ITEM_ID"
+    SQLType="NUMERIC"
+    Type="java.math.BigInteger"
+    ColumnType="NUMBER"
+    TableName="SALE_DETAIL"/>
+  <Attribute
+    Name="SdRate"
+    Precision="20"
+    Scale="3"
+    ColumnName="SD_RATE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SALE_DETAIL">
+    <validation:CompareValidationBean
+      Name="RateGreaterThan0"
+      ResId="model.entity.SaleDetail.SdRate_Rule_0"
+      OnAttribute="SdRate"
+      OperandType="LITERAL"
+      Inverse="false"
+      CompareType="GREATERTHAN"
+      CompareValue="0"/>
+  </Attribute>
+  <Attribute
+    Name="SdQuantity"
+    Precision="6"
+    Scale="0"
+    ColumnName="SD_QUANTITY"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="SALE_DETAIL">
+    <validation:CompareValidationBean
+      Name="QuantityGreaterThan0"
+      ResId="model.entity.SaleDetail.SdQuantity_Rule_0"
+      OnAttribute="SdQuantity"
+      OperandType="LITERAL"
+      Inverse="false"
+      CompareType="GREATERTHAN"
+      CompareValue="0"/>
+  </Attribute>
+  <Attribute
+    Name="SdValue"
+    Precision="20"
+    Scale="3"
+    ColumnName="SD_VALUE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SALE_DETAIL"/>
+  <AccessorAttribute
+    Name="SaleHeader"
+    Association="model.entity.asso.SaleHeaderSaleDetailAO"
+    AssociationEnd="model.entity.asso.SaleHeaderSaleDetailAO.SaleHeader"
+    AssociationOtherEnd="model.entity.asso.SaleHeaderSaleDetailAO.SaleDetail"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="PkSaleDetail"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PK_SALE_DETAIL"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entity.SaleDetail.SdId"/>
+      <Item Value="model.entity.SaleDetail.SdSrNo"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SaleDetail">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PK_SALE_HEADER"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SALE_DETAIL"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entity.SaleDetail.SdId"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

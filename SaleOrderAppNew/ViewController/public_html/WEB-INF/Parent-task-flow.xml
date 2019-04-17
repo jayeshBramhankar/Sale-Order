@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="Parent-task-flow">
+    <default-activity>C</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <view id="C">
+      <page>/C.jsff</page>
+    </view>
+    <parent-action id="parentAction1">
+      <parent-outcome>goToA</parent-outcome>
+    </parent-action>
+    <control-flow-rule id="__1">
+      <from-activity-id>C</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>toParent</from-outcome>
+        <to-activity-id>parentAction1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

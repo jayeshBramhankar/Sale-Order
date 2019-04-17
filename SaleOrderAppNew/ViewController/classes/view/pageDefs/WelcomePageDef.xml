@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="WelcomePageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SaleHeaderView1" RangeSize="25" DataControl="AppModuleDataControl" id="SaleHeaderView1Iterator"/>
+    <searchRegion Binds="SaleHeaderView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="SaleHeaderView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SaleHeaderView1Iterator" id="SaleHeaderView1">
+      <nodeDefinition DefName="model.view.SaleHeaderView" Name="SaleHeaderView10">
+        <AttrNames>
+          <Item Value="SaContact"/>
+          <Item Value="SaDate"/>
+          <Item Value="SaDeliveryAdd"/>
+          <Item Value="SaId"/>
+          <Item Value="SaPartyId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SaleHeaderView1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="SaleHeaderView1Iterator" id="CreateInsert" InstanceName="AppModuleDataControl.SaleHeaderView1"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

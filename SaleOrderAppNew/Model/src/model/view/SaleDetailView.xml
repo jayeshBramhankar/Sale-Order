@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SaleDetailView"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.view.SaleDetailView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="ItemLOVO1"
+    ViewObjectName="model.view.lovo.ItemLOVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_SdItemId"
+    ListVOName="ItemLOVO1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SdItemId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ItemId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ItemId"/>
+      <Item Value="ItemCode"/>
+      <Item Value="ItemName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <EntityUsage
+    Name="SaleDetail"
+    Entity="model.entity.SaleDetail"/>
+  <ViewAttribute
+    Name="SdId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SdId"
+    EntityUsage="SaleDetail"
+    AliasName="SD_ID"/>
+  <ViewAttribute
+    Name="SdItemId"
+    PrecisionRule="true"
+    EntityAttrName="SdItemId"
+    EntityUsage="SaleDetail"
+    AliasName="SD_ITEM_ID"
+    LOVName="LOV_SdItemId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SdQuantity"
+    PrecisionRule="true"
+    EntityAttrName="SdQuantity"
+    EntityUsage="SaleDetail"
+    AliasName="SD_QUANTITY"/>
+  <ViewAttribute
+    Name="SdRate"
+    PrecisionRule="true"
+    EntityAttrName="SdRate"
+    EntityUsage="SaleDetail"
+    AliasName="SD_RATE"/>
+  <ViewAttribute
+    Name="SdSrNo"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SdSrNo"
+    EntityUsage="SaleDetail"
+    AliasName="SD_SR_NO"/>
+  <ViewAttribute
+    Name="SdValue"
+    PrecisionRule="true"
+    EntityAttrName="SdValue"
+    EntityUsage="SaleDetail"
+    AliasName="SD_VALUE"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

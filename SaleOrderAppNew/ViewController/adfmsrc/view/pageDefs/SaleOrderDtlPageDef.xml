@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="SaleOrderDtlPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SaleHeaderView1" RangeSize="25" DataControl="AppModuleDataControl" id="SaleHeaderView1Iterator"/>
+    <iterator Binds="SaleDetailView1" RangeSize="25" DataControl="AppModuleDataControl" id="SaleDetailView1Iterator"/>
+    <searchRegion Binds="SaleDetailView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="SaleDetailView1Query"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SaleHeaderView1Iterator" id="SaDate">
+      <AttrNames>
+        <Item Value="SaDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SaleHeaderView1Iterator" id="SaContact">
+      <AttrNames>
+        <Item Value="SaContact"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SaleHeaderView1Iterator" id="SaDeliveryAdd">
+      <AttrNames>
+        <Item Value="SaDeliveryAdd"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SaleHeaderView1Iterator" id="SaId">
+      <AttrNames>
+        <Item Value="SaId"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SaleHeaderView1Iterator" StaticList="false" Uses="LOV_SaPartyId" id="SaPartyId"/>
+    <tree IterBinding="SaleDetailView1Iterator" id="SaleDetailView1">
+      <nodeDefinition DefName="model.view.SaleDetailView" Name="SaleDetailView10">
+        <AttrNames>
+          <Item Value="SdId"/>
+          <Item Value="SdItemId"/>
+          <Item Value="SdQuantity"/>
+          <Item Value="SdRate"/>
+          <Item Value="SdSrNo"/>
+          <Item Value="SdValue"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SaleDetailView1Iterator" id="Delete" InstanceName="AppModuleDataControl.SaleDetailView1"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="SaleDetailView1Iterator" id="CreateInsert" InstanceName="AppModuleDataControl.SaleDetailView1"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

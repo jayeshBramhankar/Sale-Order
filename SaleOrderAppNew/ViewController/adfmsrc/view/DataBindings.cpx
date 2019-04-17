@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.12.24" id="DataBindings"
+             SeparateXMLFiles="false" Package="view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/Welcome.jsf" usageId="view_WelcomePageDef"/>
+    <page path="/SaleOrderHdr.jsf" usageId="view_SaleOrderHdrPageDef"/>
+    <page path="/SaleOrderDtl.jsf" usageId="view_SaleOrderDtlPageDef"/>
+    <page path="PageFlow#SetCurrentRowWithKey" usageId="view_adfc_config___SetCurrentRowWithKeyPageDef"/>
+    <page path="PageFlow#Delete" usageId="view_adfc_config___DeletePageDef"/>
+    <page path="PageFlow#Commit" usageId="view_adfc_config___CommitPageDef"/>
+    <page path="/B.jsf" usageId="view_BPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_WelcomePageDef" path="view.pageDefs.WelcomePageDef"/>
+    <page id="view_SaleOrderHdrPageDef" path="view.pageDefs.SaleOrderHdrPageDef"/>
+    <page id="view_SaleOrderDtlPageDef" path="view.pageDefs.SaleOrderDtlPageDef"/>
+    <page id="view_adfc_config___SetCurrentRowWithKeyPageDef"
+          path="view.pageDefs.adfc_config___SetCurrentRowWithKeyPageDef"/>
+    <page id="view_adfc_config___DeletePageDef" path="view.pageDefs.adfc_config___DeletePageDef"/>
+    <page id="view_adfc_config___CommitPageDef" path="view.pageDefs.adfc_config___CommitPageDef"/>
+    <page id="view_BPageDef" path="view.pageDefs.BPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleDataControl" Package="model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>
