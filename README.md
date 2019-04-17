@@ -1,5 +1,10 @@
-# Sale-Order
-SaleOrderDetails
+#Commit----------------
 
-dsafsdf
-asdfasdfsdaf
+git add .
+git commit -m "Add existing file"
+git push origin
+
+
+#Update-------------
+git pull origin master
+
